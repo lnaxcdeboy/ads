@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Par ou Ímpar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input, button, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="numero" placeholder="Digite um número">
+        <button onclick="verificarParOuImpar()">Verificar</button>
+        <textarea id="resultado" readonly></textarea>
+    </div>
+
+    <script>
+        function verificarParOuImpar() {
+            let numero = parseInt(document.getElementById('numero').value);
+            let resultado = (numero % 2 === 0) ? "O número " + numero + " é Par" : "O número " + numero + " é Ímpar";
+            document.getElementById('resultado').value = resultado;
+        }
+    </script>
+</body>
+</html>

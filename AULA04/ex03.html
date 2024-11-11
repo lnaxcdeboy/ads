@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comparador de Números</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input, button, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="numero1" placeholder="Digite o primeiro número">
+        <input type="number" id="numero2" placeholder="Digite o segundo número">
+        <button onclick="compararNumeros()">Comparar</button>
+        <textarea id="resultado" readonly></textarea>
+    </div>
+
+    <script>
+        function compararNumeros() {
+            let numero1 = parseInt(document.getElementById('numero1').value);
+            let numero2 = parseInt(document.getElementById('numero2').value);
+            let resultado;
+
+            if (numero1 > numero2) {
+                resultado = "O número " + numero1 + " é maior que " + numero2;
+            } else if (numero1 < numero2) {
+                resultado = "O número " + numero2 + " é maior que " + numero1;
+            } else {
+                resultado = "Os números " + numero1 + " e " + numero2 + " são iguais";
+            }
+
+            document.getElementById('resultado').value = resultado;
+        }
+    </script>
+</body>
+</html>

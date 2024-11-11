@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Parcelas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="valorTotal" placeholder="Valor Total da Compra">
+        <input type="number" id="parcelas" placeholder="Quantidade de Parcelas">
+        <button onclick="calcularParcelas()">Calcular Parcelas</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularParcelas() {
+            let valorTotal = parseFloat(document.getElementById('valorTotal').value);
+            let parcelas = parseInt(document.getElementById('parcelas').value);
+            let juros = 0;
+
+            if (parcelas === 2) {
+                juros = 0.02;
+            } else if (parcelas === 3) {
+                juros = 0.03;
+            } else if (parcelas === 4) {
+                juros = 0.04;
+            } else if (parcelas === 5) {
+                juros = 0.05;
+            } else if (parcelas === 6) {
+                juros = 0.06;
+            } else {
+                document.getElementById('resultado').innerHTML = "Número de parcelas inválido!";
+                return;
+            }
+
+            let valorFinal = valorTotal * (1 + juros);
+            let valorParcela = valorFinal / parcelas;
+
+            document.getElementById('resultado').innerHTML = "Valor de cada parcela: R$ " + valorParcela.toFixed(2);
+        }
+    </script>
+</body>
+</html>

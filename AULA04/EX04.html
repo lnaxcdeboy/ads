@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Área de Retângulo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input, button, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="number" id="base" placeholder="Digite a base do retângulo">
+        <input type="number" id="altura" placeholder="Digite a altura do retângulo">
+        <button onclick="calcularArea()">Calcular Área</button>
+        <textarea id="resultado" readonly></textarea>
+    </div>
+
+    <script>
+        function calcularArea() {
+            let base = parseFloat(document.getElementById('base').value);
+            let altura = parseFloat(document.getElementById('altura').value);
+            let area = base * altura;
+            document.getElementById('resultado').value = "A área do retângulo é: " + area;
+        }
+    </script>
+</body>
+</html>

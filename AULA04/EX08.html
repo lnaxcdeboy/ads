@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Imposto de Renda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="salario">Salário:</label>
+        <input type="number" id="salario" placeholder="Digite o salário">
+        <label for="ir">Imposto de Renda:</label>
+        <input type="text" id="ir" readonly>
+        <button onclick="calcularIR()">Calcular IR</button>
+    </div>
+
+    <script>
+        function calcularIR() {
+            let salario = parseFloat(document.getElementById('salario').value);
+            let ir = 0;
+
+            if (salario > 3582) {
+                ir = salario * 0.275;
+            } else if (salario > 2866) {
+                ir = salario * 0.225;
+            } else if (salario > 2150) {
+                ir = salario * 0.15;
+            } else if (salario > 1434) {
+                ir = salario * 0.075;
+            }
+
+            document.getElementById('ir').value = "R$ " + ir.toFixed(2);
+        }
+    </script>
+</body>
+</html>
