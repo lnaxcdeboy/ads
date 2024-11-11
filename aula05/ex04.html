@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+        .calculator {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .calculator input, .calculator button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .calculator button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculator button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function insert(num) {
+            document.form.textview.value = document.form.textview.value + num;
+        }
+
+        function equal() {
+            let exp = document.form.textview.value;
+            if (exp) {
+                document.form.textview.value = eval(exp);
+            }
+        }
+
+        function clean() {
+            document.form.textview.value = "";
+        }
+
+        function back() {
+            let exp = document.form.textview.value;
+            document.form.textview.value = exp.substring(0, exp.length - 1);
+        }
+
+        function power() {
+            let base = prompt("Digite a base:");
+            let exponent = prompt("Digite o expoente:");
+            document.form.textview.value = Math.pow(base, exponent);
+        }
+
+        function round() {
+            let number = prompt("Digite um número para arredondar:");
+            document.form.textview.value = Math.round(number);
+        }
+
+        function sqrt() {
+            let number = prompt("Digite um número para calcular a raiz quadrada:");
+            document.form.textview.value = Math.sqrt(number);
+        }
+    </script>
+</head>
+<body>
+    <div class="calculator">
+        <form name="form">
+            <input type="text" name="textview">
+        </form>
+        <button onclick="clean()">C</button>
+        <button onclick="back()">←</button>
+        <button onclick="insert('/')">/</button>
+        <button onclick="insert('*')">*</button>
+        <button onclick="insert('7')">7</button>
+        <button onclick="insert('8')">8</button>
+        <button onclick="insert('9')">9</button>
+        <button onclick="insert('-')">-</button>
+        <button onclick="insert('4')">4</button>
+        <button onclick="insert('5')">5</button>
+        <button onclick="insert('6')">6</button>
+        <button onclick="insert('+')">+</button>
+        <button onclick="insert('1')">1</button>
+        <button onclick="insert('2')">2</button>
+        <button onclick="insert('3')">3</button>
+        <button onclick="equal()">=</button>
+        <button onclick="insert('0')">0</button>
+        <button onclick="power()">x^y</button>
+        <button onclick="round()">Round</button>
+        <button onclick="sqrt()">√</button>
+    </div>
+</body>
+</html>

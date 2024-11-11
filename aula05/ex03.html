@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário de Texto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            width: 100%;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .maiuscula {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .separar {
+            background-color: #008CBA;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="formularioTexto">
+            <input type="text" id="campoTexto" placeholder="Digite aqui...">
+            <button type="button" class="maiuscula" onclick="mostrarMaiuscula()">Maiúscula</button>
+            <button type="button" class="separar" onclick="separarPalavras()">Separar</button>
+        </form>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function mostrarMaiuscula() {
+            let texto = document.getElementById("campoTexto").value;
+            document.getElementById("resultado").innerHTML = texto.toUpperCase();
+        }
+
+        function separarPalavras() {
+            let texto = document.getElementById("campoTexto").value;
+            let palavras = texto.split(' ');
+            document.getElementById("resultado").innerHTML = palavras.join('<br>');
+        }
+    </script>
+</body>
+</html>

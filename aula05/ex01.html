@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Nomes</title>
+    <style>
+        table {
+            background-color: #CCCCCC;
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th {
+            font-size: 15px;
+            font-weight: 700;
+            background-color: #000033;
+            color: #CCCCCC;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            font-size: 14px;
+            background-color: #000066;
+            color: #CCCCCC;
+            padding: 10px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+    <script>
+        function adicionarNomes() {
+            let indice = 1;
+            let tabela = document.getElementById("tabelaNomes");
+            while (true) {
+                let nome = prompt("Digite um nome (ou cancele para parar):");
+                if (nome === null) break;
+                let linha = tabela.insertRow();
+                let celulaIndice = linha.insertCell(0);
+                let celulaNome = linha.insertCell(1);
+                celulaIndice.innerHTML = indice++;
+                celulaNome.innerHTML = nome;
+            }
+        }
+    </script>
+</head>
+<body onload="adicionarNomes()">
+    <table id="tabelaNomes">
+        <thead>
+            <tr>
+                <th>Índice</th>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+</html>

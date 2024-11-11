@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabela Personalizada</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            vertical-align: middle;
+            color: black;
+        }
+        .par {
+            background-color: green;
+        }
+        .impar {
+            background-color: yellow;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        function criarTabela() {
+            let colunas = parseInt(prompt("Digite a quantidade de colunas:"));
+            let linhas = parseInt(prompt("Digite a quantidade de linhas:"));
+            let tabela = document.createElement("table");
+
+            for (let i = 0; i < linhas; i++) {
+                let linha = tabela.insertRow();
+                for (let j = 0; j < colunas; j++) {
+                    let celula = linha.insertCell();
+                    celula.innerHTML = `(${i + 1}, ${j + 1})`;
+                    celula.className = (j % 2 === 0) ? "par" : "impar";
+                }
+            }
+
+            document.body.appendChild(tabela);
+        }
+    </script>
+</head>
+<body onload="criarTabela()">
+</body>
+</html>

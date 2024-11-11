@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abas Interativas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+        .tabs {
+            width: 70%;
+        }
+        .tabs button {
+            background-color: #ccc;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: 0.3s;
+        }
+        .tabs button:hover {
+            background-color: #aaa;
+        }
+        .tabs button.active {
+            background-color: #333;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        #slideshow img {
+            width: 100%;
+        }
+        #result {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="tabs">
+    <button class="tablink" onclick="openTab(event, 'Cronometro')">Cronômetro</button>
+    <button class="tablink" onclick="openTab(event, 'Slideshow')">Slideshow</button>
+    <button class="tablink" onclick="openTab(event, 'Tabuada')">Tabuada</button>
+    
+    <div id="Cronometro" class="tab-content">
+        <h2>Cronômetro</h2>
+        <div id="cronometro">0</div>
+    </div>
+    
+    <div id="Slideshow" class="tab-content">
+        <h2>Slideshow</h2>
+        <div id="slideshow">
+            <button onclick="mostrarAnterior()">Anterior</button>
+            <img id="imagem" src="https://via.placeholder.com/500x300?text=Imagem+1">
+            <button onclick="mostrarProximo()">Próximo</button>
+        </div>
+    </div>
+    
+    <div id="Tabuada" class="tab-content">
+        <h2>Tabuada</h2>
+        <input type="number" id="numero" placeholder="Digite um número">
+        <button onclick="calcularTabuada()">Calcular</button>
+        <div id="resultado"></div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Cronômetro
+    let tempo = 0;
+    setInterval(() => {
+        document.getElementById("cronometro").innerHTML = ++tempo;
+    }, 1000);
+
+    // Slideshow
+    let imagens = [
+        'https://via.placeholder.com/500x300?text=Imagem+1',
+        'https://via.placeholder.com/500x300?text=Imagem+2',
+        'https://via.placeholder.com/500x300?text=Imagem+3',
+        'https://via.placeholder.com/500x300?text=Imagem+4',
+        'https://via.placeholder.com/500x300?text=Imagem+5'
+    ];
+    let index = 0;
+
+    function mostrarAnterior() {
+        index = (index > 0) ? index - 1 : imagens.length - 1;
+        document.getElementById("imagem").src = imagens[index];
+    }
+
+    function mostrarProximo() {
+        index = (index < imagens.length - 1) ? index + 1 : 0;
+        document.getElementById("imagem").src = imagens[index];
+    }
+
+    // Tabuada
+    function calcularTabuada() {
+        let numero = document.getElementById("numero").value;
+        let resultado = "";
+        for (let i = 1; i <= 10; i++) {
+            resultado += numero + " x " + i + " = " + (numero * i) + "<br>";
+        }
+        document.getElementById("resultado").innerHTML = resultado;
+    }
+</script>
+
+</body>
+</html>
+
